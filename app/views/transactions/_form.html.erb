@@ -1,0 +1,42 @@
+<%= form_with(model: transaction) do |form| %>
+  <% if transaction.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(transaction.errors.count, "error") %> prohibited this transaction from being saved:</h2>
+
+      <ul>
+        <% transaction.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field mb-3">
+    <%= form.label :subcategory_id %>
+    <% items = Category.where(user_id: current_user.id) %>
+    <%= form.collection_select :subcategory_id, Subcategory.where(:category_id => items), :id, :name,{:include_blank => 'Select Category'}, {:class => 'form-select', :required => true}%>
+  </div>
+
+  <div class="field mb-3">
+    <%= form.label :description %>
+    <%= form.text_field :description , class:"form-control", :required => true%>
+  </div>
+
+  <div class="field mb-3">
+    <%= form.label :amount %>
+    <%= form.number_field :amount , class:"form-control", :required => true%>
+  </div>
+
+  <div class="field mb-3">
+    <%= form.text_field :img_url , class:"form-control", :required => true, type: :hidden%>
+  </div>
+
+  <div class="field mb-3">
+    <%= form.label :image %>
+    <%= form.file_field :image , class:"form-control"%>
+  </div>
+
+  <div class="actions">
+    <%= form.submit class:"btn btn-dark"%>
+  </div>
+<% end %>

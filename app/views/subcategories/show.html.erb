@@ -1,0 +1,30 @@
+<div class="bg-light p-5">
+
+<p>
+  <strong>Name:</strong>
+  <%= @subcategory.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @subcategory.description %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @subcategory.category_id %>
+</p>
+
+<p>
+  <strong>Alloted budget:</strong>
+  <%= @subcategory.alloted_budget %>
+</p>
+
+<p>
+  <strong>Remaining budget:</strong>
+  <%= @subcategory.remaining_budget %>
+</p>
+
+<%= link_to 'Edit', edit_subcategory_path(@subcategory), class:"btn btn-secondary p-2" %>
+<%= link_to 'Back', subcategories_path, class:"btn btn-secondary p-2" %>
+</div>
